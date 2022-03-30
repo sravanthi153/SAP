@@ -1,5 +1,6 @@
 DAY1--
 
+
 CLASS car DEFINITION.
   PUBLIC SECTION. "" visiblity
   DATA: name TYPE char18,
@@ -16,6 +17,7 @@ METHODS: DISPLAY.
       cost = m_cost.
 
   ENDMETHOD.
+
 
   METHOD DISPLAY.
     WRITE:/ 'DISPLAY METHOD'.
