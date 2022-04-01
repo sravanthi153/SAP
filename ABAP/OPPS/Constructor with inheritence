@@ -1,0 +1,50 @@
+REPORT Z_OOPS4.
+
+CLASS D1_parent DEFINITION.
+  PUBLIC SECTION.
+  METHODS: constructor.
+  CLASS-METHODS: class_constructor.
+
+  ENDCLASS.
+
+ class D1 DEFINITION INHERITING FROM D1_PARENT.
+   PUBLIC SECTION.
+   METHODS: constructor.
+   CLASS-METHODS: class_constructor.
+   ENDCLASS.
+
+
+
+class D1_parent IMPLEMENTATION.
+ METHOD constructor.
+
+   WRITE:/ 'I am parent instance'.
+   ENDMETHOD.
+
+   METHOD class_constructor.
+     WRITE:/ 'I Am parent static'.
+     ENDMETHOD.
+  ENDCLASS.
+
+
+  class D1 IMPLEMENTATION.
+    METHOD constructor.
+     super->constructor( ).
+
+  WRITE:/ 'I am child instance'.
+      ENDMETHOD.
+      METHOD class_constructor.
+  WRITE:/ 'I am child static '.
+        ENDMETHOD.
+        ENDCLASS.
+
+
+
+data: o_parent type REF TO D1_parent,
+      o_parent1 like o_parent,
+      o_child type REF TO D1,
+      o_child1 like o_child.
+
+START-OF-SELECTION.
+
+ create OBJECT:  o_child , o_parent.
