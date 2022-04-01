@@ -1,0 +1,34 @@
+REPORT Z_OOPS3.
+
+CLASS sravanthi DEFINITION.
+  PUBLIC SECTION.
+  METHODs: constructor
+           IMPORTING
+             x TYPE i
+             y TYPE i.
+  CLASS-METHODS: class_constructor, m1.
+  ENDCLASS.
+
+  CLASS sravanthi IMPLEMENTATION.
+
+    METHOD constructor.
+      WRITE:/ 'Instance constructor'.
+      DATA(z) = x + y.
+      WRITE:/ z.
+
+    ENDMETHOD.
+    METHOD class_constructor.
+
+      WRITE:/ 'static constructor'.
+      ENDMETHOD.
+     METHOD m1.
+       ENDMETHOD.
+    ENDCLASS.
+
+    data:obj TYPE REF TO sravanthi.
+    START-OF-SELECTION.
+    CREATE OBJECT: obj
+    EXPORTING
+       x = 15
+      y = 19.
+    sravanthi=>m1( ).
